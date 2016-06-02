@@ -3,7 +3,10 @@ package com.saulo.borges.roihunter.api;
 import static com.saulo.borges.roihunter.util.ApiUtils.buildUrl;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+
+import javax.ws.rs.core.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
+import com.saulo.borges.roihunter.exception.AppException;
 import com.saulo.borges.roihunter.util.DefaultRequestHandler;
 import com.saulo.borges.roihunter.util.Param;
 import com.saulo.borges.roihunter.util.RequestHandler;
@@ -32,13 +36,31 @@ public class FacebookAPI {
 		this.requestHandler = new DefaultRequestHandler();
 	}
 
-	private JSONObject getResponse(String uri) throws IOException {
-		String raw = requestHandler.get(uri);
+	private JSONObject getResponse(String uri) throws AppException {
+		String raw;
+		try {
+			raw = requestHandler.get(uri);
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new AppException(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), 500, "Error while getting the url.");
+		}
 		return new JSONObject(raw);
 	}
 
-	public FacebookUser getUserData(String fb_id, String token) throws JSONException, Exception {
-		String encode = URLEncoder.encode("likes{description,id,name,picture}", "UTF-8");
+	public FacebookUser getUserData(String fb_id, String token) throws AppException {
+
+		if (fb_id == null || token == null) {
+			throw new AppException(Response.Status.BAD_REQUEST.getStatusCode(), 400,
+					"Please set the Facebook ID and the valid access token");
+		}
+
+		String encode;
+		try {
+			encode = URLEncoder.encode("likes{description,id,name,picture}", "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			throw new AppException(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), 500, "Error while encoding the url.");
+		}
 
 		String uri = buildUrl(API_URL, fb_id, String.format("access_token=%s", token),
 				Param.name("fields").value("name,id,gender,picture," + encode));
@@ -46,7 +68,8 @@ public class FacebookAPI {
 		FacebookUser facebookUser = gson.fromJson(jsonResponse.toString(), FacebookUser.class);
 
 		if (facebookUser.getId() == null)
-			throw new Exception(jsonResponse.getString(jsonResponse.getJSONObject("error").getString("message")));
+			throw new AppException(Response.Status.BAD_REQUEST.getStatusCode(), 500,
+					jsonResponse.getString(jsonResponse.getJSONObject("error").getString("message")));
 
 		FacebookPaging paging = facebookUser.getData().getPaging();
 		while (paging != null && paging.getNext() != null) {
