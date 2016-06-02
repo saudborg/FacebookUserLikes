@@ -80,6 +80,7 @@ public class DefaultRequestHandler implements RequestHandler {
 		try {
 			HttpGet get = new HttpGet(uri);
 			client = HttpClientBuilder.create().build();
+            get.setHeader("Content-Type", "text/plain; charset=utf-8");
 			return readString(client.execute(get));
 		} catch (Exception e) {
 			throw new IOException(e);

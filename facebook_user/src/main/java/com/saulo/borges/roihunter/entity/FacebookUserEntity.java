@@ -23,7 +23,11 @@ public class FacebookUserEntity implements Serializable {
 
 	private String name;
 
-	@OneToMany(cascade= {CascadeType.ALL}, fetch=FetchType.EAGER)
+	private String gender;
+
+	private String imageUrl;
+
+	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
 	private List<FacebookPageEntity> pages;
 
 	public FacebookUserEntity() {
@@ -36,6 +40,8 @@ public class FacebookUserEntity implements Serializable {
 		for (FacebookPage page : user.getLikes()) {
 			pages.add(new FacebookPageEntity(page));
 		}
+		this.gender = user.getGender();
+		this.imageUrl = user.getPicture() != null ? user.getPicture().getData().getUrl() : null;
 	}
 
 	public String getId() {
@@ -61,7 +67,21 @@ public class FacebookUserEntity implements Serializable {
 	public void setPages(List<FacebookPageEntity> pages) {
 		this.pages = pages;
 	}
-	
-	
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 
 }

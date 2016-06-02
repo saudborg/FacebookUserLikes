@@ -10,6 +10,10 @@ public class FacebookPage implements Serializable{
 	
 	private String id;
 	
+	private String description;
+	
+	private FacebookPictureEventData picture;
+	
 	public FacebookPage() {
 	}
 
@@ -38,6 +42,22 @@ public class FacebookPage implements Serializable{
 	public String toString() {
 		return "FacebookPage [name=" + name + ", id=" + id + "]";
 	}
-	
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public FacebookPictureEventData getPicture() {
+		return picture;
+	}
+
+	public void setPicture(FacebookPictureEventData picture) {
+		this.picture = picture;
+	}
+
 
 }

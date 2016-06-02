@@ -10,9 +10,13 @@ public class FacebookUser implements Serializable {
 	private String id;
 
 	private String name;
-	
-	private FacebookData<FacebookPage> likes;
-	
+
+	private String gender;
+
+	private FacebookPictureData picture;
+
+	private FacebookPageDataList likes;
+
 	public FacebookUser() {
 	}
 
@@ -32,22 +36,37 @@ public class FacebookUser implements Serializable {
 		this.id = id;
 	}
 
-	@Override
-	public String toString() {
-		return "FacebookUser [id=" + id + ", name=" + name + "]";
-	}
-
 	public List<FacebookPage> getLikes() {
 		return likes.getData();
 	}
 
-	public void setLikes(FacebookData<FacebookPage> likes) {
+	public void setLikes(FacebookPageDataList likes) {
 		this.likes = likes;
 	}
-	
-	public FacebookData<FacebookPage> getData(){
+
+	public FacebookPageDataList getData() {
 		return likes;
 	}
 
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	@Override
+	public String toString() {
+		return "FacebookUser [id=" + id + ", name=" + name + ", gender=" + gender + ", likes=" + likes + "]";
+	}
+
+	public FacebookPictureData getPicture() {
+		return picture;
+	}
+
+	public void setPicture(FacebookPictureData picture) {
+		this.picture = picture;
+	}
 
 }

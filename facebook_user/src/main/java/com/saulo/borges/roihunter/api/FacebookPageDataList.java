@@ -2,19 +2,11 @@ package com.saulo.borges.roihunter.api;
 
 import java.util.List;
 
-public class FacebookData<T> {
+public class FacebookPageDataList {
 
-	private List<T> data;
+	private List<FacebookPage> data;
 	
 	private FacebookPaging paging;
-
-	public List<T> getData() {
-		return data;
-	}
-
-	public void setData(List<T> data) {
-		this.data = data;
-	}
 
 	public FacebookPaging getPaging() {
 		return paging;
@@ -22,5 +14,13 @@ public class FacebookData<T> {
 
 	public void setPaging(FacebookPaging paging) {
 		this.paging = paging;
+	}
+
+	public List<FacebookPage> getData() {
+		return data;
+	}
+
+	public void setData(List<FacebookPage> data) {
+		this.data = data;
 	}
 }

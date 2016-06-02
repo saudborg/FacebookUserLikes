@@ -19,4 +19,15 @@ public class FacebookServiceImpl implements FacebookService{
 		userDao.save(entity);
 	}
 
+	@Override
+	public void deleteUser(String userId) {
+		FacebookUserEntity userEntity = this.findById(userId);
+		userDao.delete(userEntity);
+	}
+	
+	public FacebookUserEntity findById(String userId){
+		FacebookUserEntity user = userDao.findById(userId);
+		return user;
+	}
+
 }
