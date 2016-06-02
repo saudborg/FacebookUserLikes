@@ -11,47 +11,32 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
 
+/**
+ * This class I copied in one of my personal projects which I work with a lot of
+ * public API's
+ * 
+ * @author sauloborges
+ *
+ */
 public class DefaultRequestHandler implements RequestHandler {
-	/**
-	 * The default and recommended character encoding.
-	 */
+
 	public static final String DEFAULT_CHARACTER_ENCODING = "UTF-8";
 	private HttpClient client = HttpClientBuilder.create().build();
 	private String characterEncoding;
 
-	/**
-	 * Creates a new handler with the specified character encoding.
-	 *
-	 * @param characterEncoding
-	 *            to use
-	 */
 	public DefaultRequestHandler(String characterEncoding) {
 		this.characterEncoding = characterEncoding;
 	}
 
-	/**
-	 * Creates a new handler with UTF-8 character encoding.
-	 */
 	public DefaultRequestHandler() {
 		this(DEFAULT_CHARACTER_ENCODING);
 	}
 
-	/**
-	 * Returns the character encoding used by this handler.
-	 *
-	 * @return character encoding
-	 */
 	@Override
 	public String getCharacterEncoding() {
 		return characterEncoding;
 	}
 
-	/**
-	 * Sets the character encoding used by this handler.
-	 *
-	 * @param characterEncoding
-	 *            to use
-	 */
 	@Override
 	public void setCharacterEncoding(String characterEncoding) {
 		this.characterEncoding = characterEncoding;
@@ -80,13 +65,13 @@ public class DefaultRequestHandler implements RequestHandler {
 		try {
 			HttpGet get = new HttpGet(uri);
 			client = HttpClientBuilder.create().build();
-            get.setHeader("Content-Type", "text/plain; charset=utf-8");
+			get.setHeader("Content-Type", "text/plain; charset=utf-8");
 			return readString(client.execute(get));
 		} catch (Exception e) {
 			throw new IOException(e);
 		}
 	}
-	
+
 	@Override
 	public String getWithHeader(String uri, Header[] headers) throws IOException {
 		try {

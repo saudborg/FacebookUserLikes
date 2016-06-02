@@ -2,6 +2,11 @@ package com.saulo.borges.roihunter.form;
 
 import java.io.Serializable;
 
+/**
+ * Represents the JSON that will received by the user when the post is requested
+ * @author sauloborges
+ *
+ */
 public class FacebookUserForm implements Serializable{
 
 	private static final long serialVersionUID = 4846454474086223735L;

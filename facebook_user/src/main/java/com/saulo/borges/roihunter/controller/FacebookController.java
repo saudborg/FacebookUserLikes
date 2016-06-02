@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
-import com.saulo.borges.roihunter.FacebookUserJson;
 import com.saulo.borges.roihunter.api.FacebookAPI;
-import com.saulo.borges.roihunter.api.FacebookUser;
+import com.saulo.borges.roihunter.api.model.FacebookUser;
 import com.saulo.borges.roihunter.entity.FacebookPageEntity;
 import com.saulo.borges.roihunter.entity.FacebookUserEntity;
 import com.saulo.borges.roihunter.exception.AppException;
 import com.saulo.borges.roihunter.form.FacebookUserForm;
+import com.saulo.borges.roihunter.json.FacebookUserJson;
 import com.saulo.borges.roihunter.service.FacebookService;
 
 @RestController

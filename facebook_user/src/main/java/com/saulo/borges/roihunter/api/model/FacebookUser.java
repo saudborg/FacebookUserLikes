@@ -1,4 +1,4 @@
-package com.saulo.borges.roihunter.api;
+package com.saulo.borges.roihunter.api.model;
 
 import java.io.Serializable;
 import java.util.List;

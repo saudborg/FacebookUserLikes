@@ -2,7 +2,7 @@ package com.saulo.borges.roihunter.service;
 
 import java.util.List;
 
-import com.saulo.borges.roihunter.api.FacebookUser;
+import com.saulo.borges.roihunter.api.model.FacebookUser;
 import com.saulo.borges.roihunter.entity.FacebookPageEntity;
 import com.saulo.borges.roihunter.entity.FacebookUserEntity;
 import com.saulo.borges.roihunter.exception.AppException;

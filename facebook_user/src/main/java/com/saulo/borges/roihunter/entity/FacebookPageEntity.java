@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import com.saulo.borges.roihunter.api.FacebookPage;
+import com.saulo.borges.roihunter.api.model.FacebookPage;
 
 @Entity
 public class FacebookPageEntity implements Serializable {

@@ -10,8 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.saulo.borges.roihunter.api.FacebookPage;
-import com.saulo.borges.roihunter.api.FacebookUser;
+import com.saulo.borges.roihunter.api.model.FacebookPage;
+import com.saulo.borges.roihunter.api.model.FacebookUser;
 
 @Entity
 public class FacebookUserEntity implements Serializable {

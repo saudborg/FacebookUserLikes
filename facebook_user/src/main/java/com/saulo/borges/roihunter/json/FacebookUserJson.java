@@ -1,4 +1,4 @@
-package com.saulo.borges.roihunter;
+package com.saulo.borges.roihunter.json;
 
 import java.io.Serializable;
 

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.saulo.borges.roihunter.api.FacebookUser;
+import com.saulo.borges.roihunter.api.model.FacebookUser;
 import com.saulo.borges.roihunter.dao.FacebookUserDao;
 import com.saulo.borges.roihunter.entity.FacebookPageEntity;
 import com.saulo.borges.roihunter.entity.FacebookUserEntity;
@@ -38,7 +38,6 @@ public class FacebookServiceImpl implements FacebookService {
 		}
 		
 		FacebookUserEntity user = userDao.findById(userId);
-		
 		if (user ==null) {
 			throw new AppException(Response.Status.BAD_REQUEST.getStatusCode(), 400, "FB_ID doesn't exists.");
 		}
