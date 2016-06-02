@@ -12,7 +12,7 @@ public class FacebookPage implements Serializable{
 	
 	private String description;
 	
-	private FacebookPictureEventData picture;
+	private FacebookPicturePageData picture;
 	
 	public FacebookPage() {
 	}
@@ -51,11 +51,11 @@ public class FacebookPage implements Serializable{
 		this.description = description;
 	}
 
-	public FacebookPictureEventData getPicture() {
+	public FacebookPicturePageData getPicture() {
 		return picture;
 	}
 
-	public void setPicture(FacebookPictureEventData picture) {
+	public void setPicture(FacebookPicturePageData picture) {
 		this.picture = picture;
 	}
 

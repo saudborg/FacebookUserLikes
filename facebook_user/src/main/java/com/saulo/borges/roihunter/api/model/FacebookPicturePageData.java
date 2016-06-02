@@ -1,6 +1,6 @@
 package com.saulo.borges.roihunter.api.model;
 
-public class FacebookPictureEventData{
+public class FacebookPicturePageData{
 	
 	private FacebookPicture data;
 
