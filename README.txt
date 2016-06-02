@@ -19,7 +19,7 @@ This project was developed for ROI Hunter. It represents a system that receive a
 ## Installation
 - Clone the git repository (https://github.com/saudborg/FacebookUserLikes)
 - In your MySQL Adm create a database named roi_hunter
-- In your terminal execute `mvn spring-boot:run`
+- In your terminal execute ` mvn spring-boot:run `
 
 
 ### How to use 
